@@ -1,20 +1,9 @@
-terraform {
-  backend "azurerm" {
-    container_name       = "terraform"
-    storage_account_name = "csg100320015f749fb9"
-    resource_group_name  = "cloud-shell-storage-centralindia"
-    key                  = "terraformstates_dev.tfstates"
-  }
-}
-
-provider "azurerm" {
-  features {
-  }
-}
+//Providers and Backend are moved to a different file not present in git
 
 resource "azurerm_resource_group" "resource_group" {
   location = var.location
   name     = var.resource_group_name
+  provider = azurerm
 }
 
 module "v-net" {
